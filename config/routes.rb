@@ -53,5 +53,8 @@ Pine::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  get '/' => "rails/welcome#index"
+  # get '/' => "rails/welcome#index"
+  match '/', to: 'welcome#index', via: :all
+  match '/network', to: 'network#index', via: :all
+  match '/opportunities', to: 'opportunities#index', via: :all
 end
