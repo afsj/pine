@@ -1,0 +1,24 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  @include css3(box-sizing, border-box);
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+header {
+  background: white;
+  padding: 10px;
+  @include css3(box-shadow, 0 0 2px rgba(6,4,8,0.15));
+}

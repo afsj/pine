@@ -1,6 +1,6 @@
-<div class="top">
-  <div class="logo">PINE</div>
-  <div class="login-container">
+<header>
+  <div class="logo left">PINE</div>
+  <div class="login-container right">
     <form class="login-form">
       <table>
         <tbody>
@@ -17,10 +17,10 @@
       </table>
     </form>
   </div>
-</div>
+</header>
 
 <div class="main">
-  <div class="left">
+  <div class="intro left">
     <h1>Philippine International Network of Experts</h1>
     <ul>
       <li>
@@ -44,7 +44,7 @@
     </ul>
   </div>
   
-  <div class="right">
+  <div class="signup-container right">
     <h1>Register</h1>
     <form class="signup-form">
       <div>
@@ -60,16 +60,27 @@
         <input type="text" name="email" id="email" >
       </div>
       <div>
-        <label for="email2">Re-enter email</label>
-        <input type="text" name="email2" id="email2" >
-      </div>
-      <div>
-        <label for="password">New password</label>
+        <label for="password">Password</label>
         <input type="text" name="password" id="password" >
       </div>
       <div>
-        <label for="password2">Re-enter password</label>
-        <input type="text" name="password2" id="password2" >
+        <label>
+          <input type="radio" value="Yes">
+          <span>Professional</span>
+        </label>
+        <label>
+          <input type="radio" value="No">
+          <span>Student</span>
+        </label>
+      </div>
+      <div>
+        <label for="country">Country</label>
+        <div class="select">
+          <select id="country" name="country">
+            <option>Japan</option>
+            <option>Philippines</option>
+          </select>
+        </div>
       </div>
       <div>
         <button class="btn">Register</button>

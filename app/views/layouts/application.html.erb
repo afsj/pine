@@ -3,22 +3,15 @@
 <head>
   <title>Pine</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag params[:controller] %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-  <header>
-    header here
-  </header>
-  
-  <main>
-    <%= yield %>
-  </main>
-  
-  </footer>
-    footer here
-  </footer>
-
+<body class="<%= body_class %>">
+  <%- if controller_name == "welcome" %>
+    <%= render "layouts/welcome" %>
+  <%- else %>
+    <%= render "layouts/main" %>
+  <%- end %>
 </body>
 </html>
