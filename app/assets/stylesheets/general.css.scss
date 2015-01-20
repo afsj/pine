@@ -1,4 +1,6 @@
-@import 'mixins';
+* {
+  @include css3(box-sizing, border-box);
+}
 
 html, body {
   height: 100%;
@@ -7,8 +9,9 @@ html, body {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  @include css3(box-sizing, border-box);
+  font-size: 14px;
+  color: #333;
+  font-family: "Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
 }
 
 .left {
@@ -19,8 +22,25 @@ body {
   float: right;
 }
 
+.clearfix:after {
+	clear: both;
+	display: block;
+	content: " ";
+	height: 0px;
+	visibility: hidden;
+}
+
 header {
   background: white;
   padding: 10px;
   @include css3(box-shadow, 0 0 2px rgba(6,4,8,0.15));
+}
+
+footer {
+  background: black;
+  color: white;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  position: fixed;
 }
