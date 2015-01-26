@@ -1,3 +1,69 @@
-// Place all the styles related to the network controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins.css.scss";
+
+.network .main {
+  min-height: 100%;
+}
+
+.network-metrics,
+.network-filters-container,
+.network-table-container {
+  top: 37px;
+}
+
+.network-metrics {
+  position: fixed;
+  height: 100%;
+  width: 230px;
+  display: block; 
+}
+
+.wrapper {
+  display: block;
+  left: 230px;
+  position: relative;
+  width: calc(100% - 231px);
+}
+
+.network-filters-container {
+  width: 100%;
+  position: relative;
+}
+
+.network-filters {
+  padding: 20px;
+  li {
+    display: inline-block;
+    margin-right: 5px;
+  }
+}
+
+.network-table-container {
+  position: relative;
+  padding: 0 20px;
+}
+
+.network-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  thead {
+    background-color: #1abc9c;
+    color: white;
+    text-align: left;
+  }
+  tbody {
+    tr.even {
+      background-color: #fbfbfb;
+    }
+  }
+  th, td {
+    padding: 10px;
+  }
+  th {
+    border: 1px solid #16a085;
+  }
+  td {
+    border: 1px solid #ebebeb;
+  }
+}
+

@@ -12,6 +12,8 @@ body {
   font-size: 14px;
   color: #333;
   font-family: "Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
+  -webkit-font-smoothing: antialiased;
+  background: white;
 }
 
 .left {
@@ -31,16 +33,69 @@ body {
 }
 
 header {
-  background: white;
   padding: 10px;
   @include css3(box-shadow, 0 0 2px rgba(6,4,8,0.15));
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: white;
+  z-index: 10;
 }
 
 footer {
-  background: black;
-  color: white;
   bottom: 0;
   width: 100%;
   padding: 10px;
   position: fixed;
+}
+
+.dropdown-menu {
+  background-color: whitesmoke;
+  border-radius: 4px;
+  position: relative;
+  @include css3(box-shadow, 0 0 1px 0 rgba(0,0,0,0.5));
+  a {
+    cursor: pointer;
+    color: #555;
+  }
+  a.label {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 18px;
+    vertical-align: top;
+    padding: 8px 15px;
+  }
+  .filter {
+    display: inline-block;
+    position: relative;
+    border-left: 1px solid #ddd;
+    margin-left: -4px;
+    a {
+      display: block;
+      font-size: 18px;
+      line-height: 18px;
+      vertical-align: middle;
+      padding: 8px;
+    }
+    ul {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: white;
+      margin-top: 5px;
+      border-radius: 4px;
+      padding: 10px 0;
+      @include css3(box-shadow, 0 1px 3px rgba(0, 0, 0, 0.2));
+      z-index: 5;
+      li {
+        display: block;
+        a {
+          padding: 10px 20px;
+          font-size: 14px;
+          width: 100%;
+        }
+      }
+    }
+  }
 }
