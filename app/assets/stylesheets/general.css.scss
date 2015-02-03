@@ -35,11 +35,12 @@ body {
 header {
   padding: 10px;
   @include css3(box-shadow, 0 0 2px rgba(6,4,8,0.15));
-  position: fixed;
+  /*position: fixed;*/
   width: 100%;
   top: 0;
   background-color: white;
   z-index: 10;
+  margin-bottom: 1%;
 }
 
 footer {

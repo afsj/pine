@@ -1,6 +1,8 @@
 Pine::Application.routes.draw do
   devise_for :users, controllers: {
-    #sessions: 'sessions'
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations'
   }
   
   # The priority is based upon order of creation: first created -> highest priority.
