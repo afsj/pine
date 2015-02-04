@@ -1,24 +1,30 @@
 <div class="main">
-  <div class="signup-container right">
-    <h3>Sign in</h3>
-    <form class="signup-form">
-      <div>
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email">
-      </div>
-      <div>
-        <label for="fpassword">Password</label>
-        <input type="text" name="password" id="password" >
-      </div>
-      <div>
-        <button class="btn">Sign in</button>
-      </div>
-      <div>
-        <%= link_to "Sign up", new_user_registration_path %><br />
-        <%= link_to "Forgot your password?", new_user_password_path %><br />
-      </div>
-    </form>
-  </div>
+  <% if user_signed_in? %>
+    <div class="align-right">
+      <%= link_to "Sign out", destroy_user_session_path %>
+    </div>
+  <% else %>
+    <div class="signup-container right">
+      <h3>Sign in</h3>
+      <%= form_for(:user, url: session_path(User), class: "signup-form") do |f| %>
+        <div>
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, id: "email" %>
+        </div>
+        <div>
+          <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: "off", id: "password" %>
+        </div>
+        <div>
+          <%= f.submit "Sign in", class: "button" %>
+        </div>
+        <div>
+          <%= link_to "Sign up", new_user_registration_path %><br />
+          <%= link_to "Forgot your password?", new_user_password_path %><br />
+        </div>
+      <% end %>
+    </div>
+  <% end %>
   
   <div class="intro ">
     <h1>PINE</h1>

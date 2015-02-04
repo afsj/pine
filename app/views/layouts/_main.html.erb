@@ -1,7 +1,7 @@
 <%= render "layouts/header" %>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<p class="notice"><%= flash[:notice] %></p>
+<p class="alert"><%= flash[:alert] %></p>
 
 <div class="main clearfix">
   <%= yield %>

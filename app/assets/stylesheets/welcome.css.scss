@@ -59,7 +59,7 @@ h1, h2, h3 {
     color: #bdc3c7;
     display: block;
   }
-  input[type="text"] {
+  input[type="text"], input[type="email"], input[type="password"] {
     color: #333;
     padding: 10px;
     display: block;
@@ -72,14 +72,14 @@ h1, h2, h3 {
     margin-top: 5px;
     margin-bottom: 15px;
   }
-  input[type="text"]:hover {
+  input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover {
     @include css3(box-shadow, 0px 0px 0 1px #748c8d);
   }
-  input[type="text"]:focus {
+  input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
     outline: none;
     @include css3(box-shadow, 0px 0px 0 1px #3498db);
   }
-  button {
+  .button {
     padding: 12px 24px;
     border: none;
     font-size: 13px;
@@ -89,7 +89,7 @@ h1, h2, h3 {
     color: white;
     margin-bottom: 15px;
   }
-  button:hover {
+  .button:hover {
     background-color: #16a085;
   }
   a {
@@ -97,4 +97,9 @@ h1, h2, h3 {
     font-weight: 300;
     color: #3498db;
   }
+}
+
+.align-right {
+  float: right;
+  margin-right: 5%;
 }
