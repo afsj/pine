@@ -72,6 +72,10 @@ footer {
     position: relative;
     border-left: 1px solid #ddd;
     margin-left: -4px;
+    &:hover {
+      background-color: rgb(249,249,249);
+      border-radius: 0 4px 4px 0;
+    }
     a {
       display: block;
       font-size: 18px;
@@ -91,12 +95,28 @@ footer {
       z-index: 5;
       li {
         display: block;
+        margin-right: 0;
         a {
           padding: 10px 20px;
           font-size: 14px;
           width: 100%;
         }
+        &:hover {
+          background-color: whitesmoke;
+        }
       }
     }
   }
+    &:hover {
+      ul {
+        display: block;
+        &:before {
+          content: "";
+          position: absolute;
+          height: 5px;
+          top: -5px;
+          width: 100%;
+        }
+      }
+    }
 }
