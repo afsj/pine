@@ -11,10 +11,90 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202183038) do
+ActiveRecord::Schema.define(version: 20150205085937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.integer  "code",       null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "degree_levels", force: :cascade do |t|
+    t.integer  "code",       null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "major_fields", force: :cascade do |t|
+    t.integer  "code",       null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "minor_fields", force: :cascade do |t|
+    t.integer  "code",       null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "opportunities", force: :cascade do |t|
+    t.string   "organization",            null: false
+    t.string   "title",                   null: false
+    t.string   "location_country",        null: false
+    t.string   "location_city",           null: false
+    t.string   "contact_details",         null: false
+    t.date     "deadline",                null: false
+    t.integer  "post_type",               null: false
+    t.decimal  "salary"
+    t.string   "keywords"
+    t.text     "post_details"
+    t.integer  "user_id"
+    t.integer  "opportunity_category_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "opportunity_categories", force: :cascade do |t|
+    t.integer  "post_type",  null: false
+    t.integer  "code",       null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_infos", force: :cascade do |t|
+    t.string   "first_name",         null: false
+    t.string   "last_name",          null: false
+    t.string   "member_type",        null: false
+    t.string   "occupation"
+    t.string   "degree_level_name"
+    t.string   "major_field_name"
+    t.string   "minor_field_name"
+    t.string   "field_keywords"
+    t.string   "organization_one"
+    t.string   "organization_two"
+    t.string   "organization_three"
+    t.string   "organization_four"
+    t.string   "organization_five"
+    t.string   "residence_country"
+    t.string   "residence_city"
+    t.string   "personal_website"
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
