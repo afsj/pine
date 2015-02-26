@@ -8,21 +8,18 @@
       <li class="dropdown-menu">
         <a class="label">Country</a>
         <div class="filter">
-          <!--<a class="icon icon-arrow-down"></a>
+          <a class="icon icon-arrow-down"></a>
           <ul>
-            <li><a>Japan</a></li>
-            <li><a>Philippines</a></li>
+            <%
+            @countries = Country.all
+            @countries.each do |country|
+            %>
+              <li><a><%= country.name %></a></li>
+            <% end %>
           </ul>
         </div>
-        -->
       </li>
       <%= select_tag 'person', options_from_collection_for_select(Country.all, 'code', 'name') %> 
-      <%
-      @countries = Country.all
-      @countries.each do |country|
-      %>
-        <%= country.name %>
-      <% end %>
     </ul>
   </div>
   <div class="network-table-container">
