@@ -8,12 +8,14 @@
       <li class="dropdown-menu">
         <a class="label">Country</a>
         <div class="filter">
-          <a class="icon icon-arrow-down"></a>
+          <!--<a class="icon icon-arrow-down"></a>
           <ul>
             <li><a>Japan</a></li>
             <li><a>Philippines</a></li>
           </ul>
         </div>
+        -->
+        <%= select_tag 'person', options_from_collection_for_select(Country.all, 'code', 'name') %> 
       </li>
       <li class="dropdown-menu">
         <a class="label">Country</a>
