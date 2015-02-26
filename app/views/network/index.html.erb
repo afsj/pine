@@ -10,10 +10,7 @@
         <div class="filter">
           <a class="icon icon-arrow-down"></a>
           <ul>
-            <%
-            @countries = Country.all
-            @countries.each do |country|
-            %>
+            <% @countries.each do |country| %>
               <li><a><%= country.name %></a></li>
             <% end %>
           </ul>
