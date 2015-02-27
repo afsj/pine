@@ -32,22 +32,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Test</td>
-          <td>Test</td>
-          <td>Test</td>
-          <td>Test</td>
-          <td>Test</td>
-          <td>Test</td>
+        <% @user.each_with_index do |u,i| %>
+        <tr class="<%= i.odd? ? 'odd' : 'even' %>">
+          <td><%= u.user_info.first_name %> <%= u.user_info.last_name %></td>
+          <td><%= u.user_info.occupation %></td>
+          <td><%= u.user_info.major_field_name %></td>
+          <td><%= u.user_info.organization_one %></td>
+          <td><%= u.user_info.field_keywords %></td>
+          <td><%= u.email %></td>
         </tr>
-        <tr class="even">
-          <td>Test</td>
-          <td>Test</td>
-          <td>Test</td>
-          <td>Test</td>
-          <td>Test</td>
-          <td>Test</td>
-        </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
