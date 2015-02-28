@@ -6,21 +6,30 @@
   <div class="network-filters-container">
     <ul class="network-filters">
       <li class="tab-menu first <%= params.has_key?(:member_type) ? '' : 'active' %>">
-        <%= link_to "All", params.merge(:member_type => nil, :page => nil), :class => "label" %>
+        <%= link_to "All", params.merge(:member_type => nil, :page => nil, :major_field => nil, :country => nil), :class => "label" %>
       </li>
       <li class="tab-menu <%= params[:member_type] == 'Professional' ? 'active' : '' %>">
-        <%= link_to "Professionals", params.merge(member_type: "Professional", :page => nil), :class => "label" %>
+        <%= link_to "Professionals", params.merge(member_type: "Professional", :page => nil, :major_field => nil, :country => nil), :class => "label" %>
       </li>
       <li class="tab-menu last <%= params[:member_type] == 'Student' ? 'active' : '' %>">
-        <%= link_to "Students", params.merge(member_type: "Student", :page => nil), :class => "label" %>
+        <%= link_to "Students", params.merge(member_type: "Student", :page => nil, :major_field => nil, :country => nil), :class => "label" %>
       </li>
       <li class="dropdown-menu">
         <a class="label">Country</a>
         <div class="filter">
           <a class="icon icon-arrow-down"></a>
           <ul>
-            <li><%= link_to "Philippines", params.merge(country: "Philippines", :page => nil) %></li>
-            <li><%= link_to "Japan", params.merge(country: "Japan", :page => nil) %></li>
+            <li><%= link_to "All Countries", params.merge(:country => nil, :page => nil) %></li>
+            <% @countries.each do |c| %>
+              <% if (params[:country] == c.residence_country) %>
+                <li class="active" stye="color: red"><%= link_to c.residence_country, params.merge(country: c.residence_country, :page => nil) %></li>
+              <% end %>
+            <% end %>
+            <% @countries.each do |c| %>
+              <% if (params[:country] != c.residence_country) %>
+                <li><%= link_to c.residence_country, params.merge(country: c.residence_country, :page => nil) %></li>
+              <% end %>
+            <% end %>
           </ul>
         </div>
       </li>
@@ -29,9 +38,16 @@
         <div class="filter">
           <a class="icon icon-arrow-down"></a>
           <ul>
-            <li><a href="/network?major_field="></a></li>
+            <li><%= link_to "All Fields", params.merge(:major_field => nil, :page => nil) %></li>
             <% @major_fields.each do |f| %>
-            <li><%= link_to f.major_field_name, params.merge(major_field: f.major_field_name, :page => nil) %></li>
+              <% if (params[:major_field] == f.major_field_name) %>
+                <li class="active"><%= link_to f.major_field_name, params.merge(major_field: f.major_field_name, :page => nil) %></li>
+              <% end %>
+            <% end %>
+            <% @major_fields.each do |f| %>
+              <% if (params[:major_field] != f.major_field_name) %>
+                <li><%= link_to f.major_field_name, params.merge(major_field: f.major_field_name, :page => nil) %></li>
+              <% end %>
             <% end %>
           </ul>
         </div>
@@ -58,7 +74,7 @@
           <td><%= u.user_info.major_field_name %></td>
           <td><%= u.user_info.organization_one %></td>
           <td><%= u.user_info.field_keywords %></td>
-          <td><%= u.email %></td>
+          <td><a href="mailto:<%= u.email %>">icon</a></td>
         </tr>
         <% end %>
       </tbody>
