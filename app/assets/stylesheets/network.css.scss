@@ -2,26 +2,22 @@
 
 .network .main {
   min-height: 100%;
-}
-
-.network-metrics,
-.network-filters-container,
-.network-table-container {
-  top: 37px;
+  padding-bottom: 30px;
 }
 
 .network-metrics {
   position: fixed;
   height: 100%;
   width: 230px;
-  display: block; 
+  display: block;
+  display: none;
 }
 
 .wrapper {
   display: block;
-  left: 230px;
+  //left: 230px;
   position: relative;
-  width: calc(100% - 231px);
+  //width: calc(100% - 231px);
 }
 
 .network-filters-container {
@@ -67,3 +63,27 @@
   }
 }
 
+.pagination {
+  padding: 0 20px;
+  margin-top: 20px;
+  text-align: center;
+  span, em, a {
+    padding: 7px 10px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #e3e3e3;
+    display: inline-block;
+    font-weight: 300;
+    color: #bdc3c7;
+  }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #3498db;
+  }
+  em.current {
+    color: #333;
+  }
+}
