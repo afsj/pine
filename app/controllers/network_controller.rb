@@ -2,6 +2,7 @@ class NetworkController < ApplicationController
   before_filter :authenticate_user!, :except => [] 
   has_scope :country
   has_scope :major_field 
+  has_scope :member_type
   def index
     @major_fields = UserInfo.select(:major_field_name).distinct
     @minor_fields = UserInfo.select(:minor_field_name).distinct

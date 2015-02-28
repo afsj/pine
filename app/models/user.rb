@@ -9,5 +9,5 @@ class User < ActiveRecord::Base
   
   scope :country, -> country { where("user_infos.residence_country = ?", country) }
   scope :major_field, -> major_field { where("user_infos.major_field_name = ?", major_field) }
-  scope :minor_field, -> minor_field { where("user_infos.minor_field_name = ?", minor_field) }
+  scope :member_type, -> member_type{ where("user_infos.member_type = ?", member_type) }
 end

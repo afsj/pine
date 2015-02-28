@@ -1,10 +1,19 @@
 <div class="network-metrics left">
-  graphs here
+  <div class="chart-container"></div>
 </div>
 
 <div class="wrapper">
   <div class="network-filters-container">
     <ul class="network-filters">
+      <li class="tab-menu first <%= params.has_key?(:member_type) ? '' : 'active' %>">
+        <%= link_to "All", params.merge(:member_type => nil, :page => nil), :class => "label" %>
+      </li>
+      <li class="tab-menu <%= params[:member_type] == 'Professional' ? 'active' : '' %>">
+        <%= link_to "Professionals", params.merge(member_type: "Professional", :page => nil), :class => "label" %>
+      </li>
+      <li class="tab-menu last <%= params[:member_type] == 'Student' ? 'active' : '' %>">
+        <%= link_to "Students", params.merge(member_type: "Student", :page => nil), :class => "label" %>
+      </li>
       <li class="dropdown-menu">
         <a class="label">Country</a>
         <div class="filter">
@@ -27,18 +36,6 @@
           </ul>
         </div>
       </li>
-      <li class="dropdown-menu">
-        <a class="label">Minor Field</a>
-        <div class="filter">
-          <a class="icon icon-arrow-down"></a>
-          <ul>
-            <% @minor_fields.each do |f| %>
-            <li><%= link_to f.minor_field_name, params.merge(minor_field: f.minor_field_name, :page => nil) %></li>
-            <% end %>
-          </ul>
-        </div>
-      </li>
-      <!--<%= select_tag 'person', options_from_collection_for_select(Country.all, 'code', 'name') %>--> 
     </ul>
   </div>
   <div class="network-table-container">
