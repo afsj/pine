@@ -5,15 +5,16 @@ class NetworkController < ApplicationController
   has_scope :member_type
   
   def index
-    if (params[:member_type] == 'Professional')
-      @major_fields = UserInfo.select(:major_field_name).distinct.where(:member_type => 'Professional')
-      @countries = UserInfo.select(:residence_country).distinct.where(:member_type => 'Professional')
-    elsif (params[:member_type] == 'Student')
+    if (params[:member_type] == 'Student')
       @major_fields = UserInfo.select(:major_field_name).distinct.where(:member_type => 'Student')
       @countries = UserInfo.select(:residence_country).distinct.where(:member_type => 'Student')
     else
-      @major_fields = UserInfo.select(:major_field_name).distinct
-      @countries = UserInfo.select(:residence_country).distinct
+      @major_fields = UserInfo.select(:major_field_name).distinct.where(:member_type => 'Professional')
+      @countries = UserInfo.select(:residence_country).distinct.where(:member_type => 'Professional')
+    end
+    
+    unless (params.has_key?(:member_type))
+      params[:member_type] = 'Professional'
     end
     
     @users = apply_scopes(User).all

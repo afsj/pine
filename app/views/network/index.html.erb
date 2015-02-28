@@ -5,10 +5,7 @@
 <div class="wrapper">
   <div class="network-filters-container">
     <ul class="network-filters">
-      <li class="tab-menu first <%= params.has_key?(:member_type) ? '' : 'active' %>">
-        <%= link_to "All", params.merge(:member_type => nil, :page => nil, :major_field => nil, :country => nil), :class => "label" %>
-      </li>
-      <li class="tab-menu <%= params[:member_type] == 'Professional' ? 'active' : '' %>">
+      <li class="tab-menu first <%= params.has_key?(:member_type) ? '' : 'active' %> <%= params[:member_type] == 'Professional' ? 'active' : '' %>">
         <%= link_to "Professionals", params.merge(member_type: "Professional", :page => nil, :major_field => nil, :country => nil), :class => "label" %>
       </li>
       <li class="tab-menu last <%= params[:member_type] == 'Student' ? 'active' : '' %>">
@@ -59,7 +56,13 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Occupation</th>
+          <th>
+            <% if (params[:member_type] == 'Student') %>
+              Degree
+            <% else %>
+              Occupation
+            <% end %>
+          </th>
           <th>Major</th>
           <th>Affiliation</th>
           <th>Field Keywords</th>
@@ -70,11 +73,21 @@
         <% @users.each_with_index do |u,i| %>
         <tr class="<%= i.odd? ? 'odd' : 'even' %>">
           <td><%= u.user_info.first_name %> <%= u.user_info.last_name %></td>
-          <td><%= u.user_info.occupation %></td>
+          <td>
+            <% if (params[:member_type] == 'Student') %>
+              <%= u.user_info.degree_level_name %>
+            <% else %>
+              <%= u.user_info.occupation %>
+            <% end %>
+          </td>
           <td><%= u.user_info.major_field_name %></td>
           <td><%= u.user_info.organization_one %></td>
           <td><%= u.user_info.field_keywords %></td>
-          <td><a href="mailto:<%= u.email %>">icon</a></td>
+          <td>
+            <% unless (u.user_info.personal_website == '') %>
+              <a href="mailto:<%= u.user_info.personal_website %>">icon</a>
+            <% end %>
+          </td>    
         </tr>
         <% end %>
       </tbody>
