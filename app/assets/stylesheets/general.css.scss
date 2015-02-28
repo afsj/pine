@@ -93,6 +93,9 @@ footer {
       padding: 10px 0;
       @include css3(box-shadow, 0 1px 3px rgba(0, 0, 0, 0.2));
       z-index: 5;
+      max-height: 300px;
+      overflow-y: auto;
+      width: 180px;
       li {
         display: block;
         margin-right: 0;
@@ -110,13 +113,14 @@ footer {
     &:hover {
       ul {
         display: block;
-        &:before {
-          content: "";
-          position: absolute;
-          height: 5px;
-          top: -5px;
-          width: 100%;
-        }
+      }
+      &:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        height: 5px;
+        bottom: -5px;
+        width: 100%;
       }
     }
 }
