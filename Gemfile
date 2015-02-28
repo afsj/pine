@@ -48,3 +48,5 @@ gem 'rails_12factor'
 # gem 'debugger', group: [:development, :test]
 
 gem 'will_paginate', '~> 3.0.6'
+
+gem 'has_scope'

@@ -5,24 +5,13 @@
 <div class="wrapper">
   <div class="network-filters-container">
     <ul class="network-filters">
-     <!-- <li class="dropdown-menu">
-        <a class="label">Country</a>
-        <div class="filter">
-          <a class="icon icon-arrow-down"></a>
-          <ul>
-            <% @countries.each do |country| %>
-              <li><a><%= country.name %></a></li>
-            <% end %>
-          </ul>
-        </div>
-      </li> -->
       <li class="dropdown-menu">
         <a class="label">Country</a>
         <div class="filter">
           <a class="icon icon-arrow-down"></a>
           <ul>
-            <li><a href="/network?country=Philippines">Philippines</a></li>
-            <li><a href="/network?country=Japan">Japan</a></li>
+            <li><%= link_to "Philippines", params.merge(country: "Philippines") %></li>
+            <li><%= link_to "Japan", params.merge(country: "Japan") %></li>
           </ul>
         </div>
       </li>
@@ -31,8 +20,9 @@
         <div class="filter">
           <a class="icon icon-arrow-down"></a>
           <ul>
+            <li><a href="/network?major_field="></a></li>
             <% @major_fields.each do |f| %>
-            <li><a><%= f.major_field_name %></a></li>
+            <li><%= link_to f.major_field_name, params.merge(major_field: f.major_field_name) %></li>
             <% end %>
           </ul>
         </div>
@@ -43,7 +33,7 @@
           <a class="icon icon-arrow-down"></a>
           <ul>
             <% @minor_fields.each do |f| %>
-            <li><a><%= f.minor_field_name %></a></li>
+            <li><%= link_to f.minor_field_name, params.merge(minor_field: f.minor_field_name) %></li>
             <% end %>
           </ul>
         </div>
