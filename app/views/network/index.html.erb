@@ -10,8 +10,8 @@
         <div class="filter">
           <a class="icon icon-arrow-down"></a>
           <ul>
-            <li><%= link_to "Philippines", params.merge(country: "Philippines") %></li>
-            <li><%= link_to "Japan", params.merge(country: "Japan") %></li>
+            <li><%= link_to "Philippines", params.merge(country: "Philippines", :page => nil) %></li>
+            <li><%= link_to "Japan", params.merge(country: "Japan", :page => nil) %></li>
           </ul>
         </div>
       </li>
@@ -22,7 +22,7 @@
           <ul>
             <li><a href="/network?major_field="></a></li>
             <% @major_fields.each do |f| %>
-            <li><%= link_to f.major_field_name, params.merge(major_field: f.major_field_name) %></li>
+            <li><%= link_to f.major_field_name, params.merge(major_field: f.major_field_name, :page => nil) %></li>
             <% end %>
           </ul>
         </div>
@@ -33,7 +33,7 @@
           <a class="icon icon-arrow-down"></a>
           <ul>
             <% @minor_fields.each do |f| %>
-            <li><%= link_to f.minor_field_name, params.merge(minor_field: f.minor_field_name) %></li>
+            <li><%= link_to f.minor_field_name, params.merge(minor_field: f.minor_field_name, :page => nil) %></li>
             <% end %>
           </ul>
         </div>
