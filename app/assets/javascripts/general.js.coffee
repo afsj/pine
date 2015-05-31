@@ -10,3 +10,10 @@ $ ->
     if (scrollTo)
       e.preventDefault()
       $(this).scrollTop(scrollTo + $(this).scrollTop())
+  
+  $('nav').hover (->
+    $('.switcher').css('display', 'block')
+    return
+  ), ->
+    $('.switcher').css('display', 'none')
+    return

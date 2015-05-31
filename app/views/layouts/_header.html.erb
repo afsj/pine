@@ -2,7 +2,14 @@
   <div class="logo left">PINE</div>
   <% if user_signed_in? %>
     <div class="right">
-      <%= link_to "Sign out", destroy_user_session_path %>
+      <nav>
+        <a class="switcher-link">dropdown</a>
+        <ul class="switcher">
+          <li><a>Network</a></li>
+          <li><a>Opportunities</a></li>
+          <li><%= link_to "Sign out", destroy_user_session_path %></li>
+        </ul>
+      </nav>
     </div>
   <% end %>
 </header>

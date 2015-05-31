@@ -33,14 +33,51 @@ body {
 }
 
 header {
-  padding: 10px;
+  height: 55px;
   @include css3(box-shadow, 0 0 2px rgba(6,4,8,0.15));
-  /*position: fixed;*/
+  position: fixed;
   width: 100%;
   top: 0;
   background-color: white;
   z-index: 10;
   margin-bottom: 1%;
+}
+
+nav {
+  position: relative;
+  .switcher-link {
+    height: 55px;
+    display: block;
+    cursor: pointer;
+  }
+  .switcher {
+    display: none;
+    position: absolute;
+    background: white;
+    width: 300px;
+    right: 0;
+    box-shadow: -1px 0px 2px 0 rgba(0,0,0,0.1);
+    li {
+      border-bottom: 1px solid #ebebeb;
+      a {
+        display: block;
+        padding: 15px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      a:hover {
+        background: whitesmoke;
+      }
+    }
+    li:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.main {
+  position: relative;
+  top: 55px;
 }
 
 footer {
