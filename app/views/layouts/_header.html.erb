@@ -3,7 +3,7 @@
   <% if user_signed_in? %>
     <div class="right">
       <nav>
-        <a class="switcher-link">Dropdown</a>
+        <a class="switcher-link">Dropdown <%= current_user.email %></a>
         <ul class="switcher">
           <li><a href="/network">Network</a></li>
           <li><a href="/opportunities">Opportunities</a></li>
