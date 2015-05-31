@@ -3,10 +3,10 @@
   <% if user_signed_in? %>
     <div class="right">
       <nav>
-        <a class="switcher-link">dropdown</a>
+        <a class="switcher-link">Dropdown</a>
         <ul class="switcher">
-          <li><a>Network</a></li>
-          <li><a>Opportunities</a></li>
+          <li><a href="/network">Network</a></li>
+          <li><a href="/opportunities">Opportunities</a></li>
           <li><%= link_to "Sign out", destroy_user_session_path %></li>
         </ul>
       </nav>
