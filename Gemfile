@@ -50,3 +50,6 @@ gem 'rails_12factor'
 gem 'will_paginate', '~> 3.0.6'
 
 gem 'has_scope'
+
+gem 'mail_form'
+gem 'simple_form'

@@ -5,6 +5,10 @@ Pine::Application.routes.draw do
     registrations: 'users/registrations'
   }
   
+  authenticated :user do
+    root :to => 'network#index', as: :authenticated_root
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

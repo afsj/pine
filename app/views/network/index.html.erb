@@ -6,10 +6,10 @@
   <div class="network-filters-container">
     <ul class="network-filters">
       <li class="tab-menu first <%= params.has_key?(:member_type) ? '' : 'active' %> <%= params[:member_type] == 'Professional' ? 'active' : '' %>">
-        <%= link_to "Professionals", params.merge(member_type: "Professional", :page => nil, :major_field => nil, :country => nil), :class => "label" %>
+        <%= link_to "Professionals", params.merge(member_type: "Professional", :page => nil, :minor_field => nil, :major_field => nil, :country => nil), :class => "label" %>
       </li>
       <li class="tab-menu last <%= params[:member_type] == 'Student' ? 'active' : '' %>">
-        <%= link_to "Students", params.merge(member_type: "Student", :page => nil, :major_field => nil, :country => nil), :class => "label" %>
+        <%= link_to "Students", params.merge(member_type: "Student", :page => nil, :minor_field => nil, :major_field => nil, :country => nil), :class => "label" %>
       </li>
       <li class="dropdown-menu">
         <a class="label">Country</a>
@@ -49,6 +49,25 @@
           </ul>
         </div>
       </li>
+      <li class="dropdown-menu">
+        <a class="label">Minor Field</a>
+        <div class="filter">
+          <a class="icon icon-arrow-down"></a>
+          <ul>
+            <li><%= link_to "All Fields", params.merge(:minor_field => nil, :page => nil) %></li>
+            <% @minor_fields.each do |f| %>
+              <% if (params[:minor_field] == f.minor_field_name) %>
+                <li class="active"><%= link_to f.minor_field_name, params.merge(minor_field: f.minor_field_name, :page => nil) %></li>
+              <% end %>
+            <% end %>
+            <% @minor_fields.each do |f| %>
+              <% if (params[:minor_field] != f.minor_field_name) %>
+                <li><%= link_to f.minor_field_name, params.merge(minor_field: f.minor_field_name, :page => nil) %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </li>
     </ul>
   </div>
   <div class="network-table-container">
@@ -64,6 +83,7 @@
             <% end %>
           </th>
           <th>Major</th>
+          <th>Minor</th>
           <th>Affiliation</th>
           <th>Field Keywords</th>
           <th>Contact</th>
@@ -81,11 +101,12 @@
             <% end %>
           </td>
           <td><%= u.user_info.major_field_name %></td>
+          <td><%= u.user_info.minor_field_name %></td>
           <td><%= u.user_info.organization_one %></td>
           <td><%= u.user_info.field_keywords %></td>
           <td>
             <% unless (u.user_info.personal_website == '') %>
-              <a href="mailto:<%= u.user_info.personal_website %>">icon</a>
+              <a href="/contacts?id=<%= u.user_info.id %>">icon</a>
             <% end %>
           </td>    
         </tr>

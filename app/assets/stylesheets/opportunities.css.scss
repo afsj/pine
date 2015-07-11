@@ -1,3 +1,90 @@
-// Place all the styles related to the opportunities controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins.css.scss";
+
+.network .main {
+  min-height: 100%;
+  padding-bottom: 30px;
+}
+
+.network-metrics {
+  position: fixed;
+  height: 100%;
+  width: 230px;
+  display: block;
+  display: none;
+}
+
+.wrapper {
+  display: block;
+  //left: 230px;
+  position: relative;
+  //width: calc(100% - 231px);
+}
+
+.network-filters-container {
+  width: 100%;
+  position: relative;
+}
+
+.network-filters {
+  padding: 30px 20px;
+  text-align: right;
+  li {
+    display: inline-block;
+    margin-right: 5px;
+  }
+}
+
+.network-table-container {
+  position: relative;
+  padding: 0 20px;
+}
+
+.network-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  thead {
+    background-color: #1abc9c;
+    color: white;
+    text-align: left;
+  }
+  tbody {
+    tr.odd {
+      background-color: #fbfbfb;
+    }
+  }
+  th, td {
+    padding: 10px;
+  }
+  th {
+    border: 1px solid #16a085;
+  }
+  td {
+    border: 1px solid #ebebeb;
+  }
+}
+
+.pagination {
+  padding: 0 20px;
+  margin-top: 20px;
+  text-align: center;
+  span, em, a {
+    padding: 7px 10px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #e3e3e3;
+    display: inline-block;
+    font-weight: 300;
+    color: #bdc3c7;
+  }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #3498db;
+  }
+  em.current {
+    color: #333;
+  }
+}

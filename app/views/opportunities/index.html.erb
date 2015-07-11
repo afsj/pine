@@ -1,1 +1,69 @@
-Opportunities page
+<div class="network-metrics left">
+  <div class="chart-container"></div>
+</div>
+
+<div class="wrapper">
+  <div class="network-filters-container">
+    <ul class="network-filters">
+      <li class="tab-menu first <%= params.has_key?(:post_type) ? '' : 'active' %> <%= params[:post_type] == 1 ? 'active' : '' %>">
+        <%= link_to "Employment", params.merge(post_type: 1, :page => nil, :opportunity_category => nil), :class => "label" %>
+      </li>
+      <li class="tab-menu last <%= params[:post_type] == 'Academic' ? 'active' : '' %>">
+        <%= link_to "Academic", params.merge(post_type: 2, :page => nil, :opportunity_category => nil), :class => "label" %>
+      </li>
+<!--      <li class="tab-menu last <%= params[:post_type] == 'Others' ? 'active' : '' %>">
+        <%= link_to "Others", params.merge(post_type: 9, :page => nil, :opportunity_category => nil), :class => "label" %>-->
+      </li>
+      <li class="dropdown-menu">
+        <a class="label">Category</a>
+        <div class="filter">
+          <a class="icon icon-arrow-down"></a>
+          <ul>
+            <li><%= link_to "All Fields", params.merge(:opportunity_category => nil, :page => nil) %></li>
+            <% @opportunity_categories.each do |f| %>
+              <% if (params[:opportunity_category] == f.opportunity_category_id.opportunity_category.name) %>
+                <li class="active"><%= link_to f.opportunity_category_id.opportunity_category.name, params.merge(opportunity_category: f.opportunity_category_id.opportunity_category.name, :page => nil) %></li>
+              <% end %>
+            <% end %>
+            <% @opportunity_categories.each do |f| %>
+              <% if (params[:opportunity_category] != f.opportunity_category_id.opportunity_category.name) %>
+                <li><%= link_to f.opportunity_category_id.opportunity_category.name, params.merge(opportunity_category: f.opportunity_category_id.opportunity_category.name, :page => nil) %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="network-table-container">
+    <table class="network-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Category</th>
+          <th>Title</th>
+          <th>Location</th>
+          <th>Details</th>
+          <th>Contact</th>
+          <th>Keywords</th>
+          <th>Deadline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @opportunities.each_with_index do |o,i| %>
+        <tr class="<%= i.odd? ? 'odd' : 'even' %>">
+          <td><%= o.created_at %></td>
+          <td><%= o.opportunity_category_id.opportunity_category.name %></td>
+          <td><%= o.title %></td>
+          <td><%= o.location_country %></td>
+          <td><%= o.post_details %></td>
+		  <td><%= o.contact_details %></td>
+          <td><%= o.keywords %></td>
+          <td><%= o.deadline %></td>  
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= will_paginate @opportunities %>
+</div>
